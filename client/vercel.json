@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "buildCommand": "npm install && npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "https://vartalap-server.onrender.com/api/$1" },
+    { "source": "/uploads/(.*)", "destination": "https://vartalap-server.onrender.com/uploads/$1" }
+  ]
+}

@@ -30,7 +30,11 @@ export function SocketProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    const newSocket = io(window.location.hostname === 'localhost' ? 'http://localhost:3001' : window.location.origin, {
+    // Use environment variable for WS URL, or determine from current location
+    const WS_URL = import.meta.env.VITE_WS_URL || 
+      (window.location.hostname === 'localhost' ? 'http://localhost:3001' : window.location.origin);
+
+    const newSocket = io(WS_URL, {
       auth: { token },
       transports: ['websocket', 'polling'],
     });

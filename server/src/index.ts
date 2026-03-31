@@ -20,9 +20,13 @@ dotenv.config();
 
 const app = express();
 const httpServer = createServer(app);
+
+// CORS origins (allow multiple)
+const corsOrigins = (process.env.CLIENT_URL || 'http://localhost:5173').split(',').map(s => s.trim());
+
 const io = new SocketServer(httpServer, {
   cors: {
-    origin: process.env.CLIENT_URL || 'http://localhost:5173',
+    origin: corsOrigins,
     methods: ['GET', 'POST'],
     credentials: true,
   },
@@ -32,11 +36,12 @@ const io = new SocketServer(httpServer, {
 app.use(helmet({
   contentSecurityPolicy: false,
   crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
 }));
 
 // CORS
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: corsOrigins,
   credentials: true,
 }));
 
@@ -92,5 +97,26 @@ async function start() {
     process.exit(1);
   }
 }
+
+// Graceful shutdown for Render
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  httpServer.close(() => {
+    mongoose.connection.close().then(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  });
+});
+
+process.on('SIGINT', () => {
+  console.log('SIGINT received, shutting down gracefully');
+  httpServer.close(() => {
+    mongoose.connection.close().then(() => {
+      console.log('Server closed');
+      process.exit(0);
+    });
+  });
+});
 
 start();

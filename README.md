@@ -112,3 +112,38 @@ See [API.md](./API.md) for full API documentation.
 ## License
 
 MIT License
+
+## Access
+
+### Local Access
+- **Frontend:** http://localhost:5173
+- **Backend API:** http://localhost:3001
+- **API Health:** http://localhost:3001/api/health
+
+### Network Access (same network)
+- **Local IP:** 192.168.1.7
+- **Frontend:** http://192.168.1.7:5173
+- **Backend API:** http://192.168.1.7:3001
+
+### External Access
+For external access from outside your network, you need to:
+1. Configure your router to forward ports 5173 and 3001 to your machine
+2. Or use a tunneling service like ngrok:
+   ```bash
+   ngrok http 5173  # For frontend
+   ngrok http 3001  # For API
+   ```
+3. Or deploy to a cloud server
+
+## Auto-Start on Boot
+The app uses systemd services that start automatically on boot:
+- `vartalap-mongodb` — MongoDB database
+- `vartalap-server` — Backend server
+- `vartalap-client` — Frontend dev server
+
+To manage services:
+```bash
+systemctl --user status vartalap-mongodb vartalap-server vartalap-client
+systemctl --user restart vartalap-server  # Restart server
+systemctl --user restart vartalap-client  # Restart client
+```

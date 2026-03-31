@@ -1,0 +1,44 @@
+services:
+  # Backend API Server
+  - type: web
+    name: vartalap-server
+    runtime: node
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: vartalap-mongo
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false
+    healthCheckPath: /api/health
+    autoDeploy: true
+
+  # Frontend Static Site
+  - type: web
+    name: vartalap-client
+    runtime: static
+    rootDir: client
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://vartalap-server.onrender.com/api
+      - key: VITE_WS_URL
+        value: wss://vartalap-server.onrender.com
+      - key: VITE_MEDIA_URL
+        value: https://vartalap-server.onrender.com/uploads
+    autoDeploy: true
+
+databases:
+  - name: vartalap-mongo
+    engine: mongo
+    plan: free

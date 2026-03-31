@@ -1,0 +1,132 @@
+.new-dm-modal {
+  max-width: 400px;
+}
+
+.new-dm-modal h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.new-dm-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.new-dm-search {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg-tertiary);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.new-dm-search:focus {
+  outline: 1px solid var(--accent);
+}
+
+.new-dm-results {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.new-dm-empty {
+  text-align: center;
+  padding: 24px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.new-dm-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.1s;
+  text-align: left;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.new-dm-user:hover {
+  background: var(--bg-hover);
+}
+
+.new-dm-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 13px;
+  color: white;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.new-dm-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.new-dm-status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-secondary);
+}
+
+.new-dm-status.online { background: var(--success); }
+.new-dm-status.idle { background: var(--warning); }
+.new-dm-status.dnd { background: var(--danger); }
+.new-dm-status.offline { background: var(--text-muted); }
+
+.new-dm-name {
+  font-weight: 500;
+}
+
+.join-server-modal {
+  max-width: 400px;
+}
+
+.join-server-modal h2 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.join-server-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.join-server-input {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--bg-tertiary);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--text-primary);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.join-server-input:focus {
+  outline: 1px solid var(--accent);
+}

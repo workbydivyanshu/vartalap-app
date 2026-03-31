@@ -5,9 +5,9 @@
   "installCommand": "npm install",
   "framework": "vite",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "$BACKEND_URL/api/$1" },
-    { "source": "/uploads/(.*)", "destination": "$BACKEND_URL/uploads/$1" },
-    { "source": "/socket.io/(.*)", "destination": "$BACKEND_URL/socket.io/$1" }
+    { "source": "/api/(.*)", "destination": "https://unexercised-breann-unacclivitous.ngrok-free.dev/api/$1" },
+    { "source": "/uploads/(.*)", "destination": "https://unexercised-breann-unacclivitous.ngrok-free.dev/uploads/$1" },
+    { "source": "/socket.io/(.*)", "destination": "https://unexercised-breann-unacclivitous.ngrok-free.dev/socket.io/$1" }
   ],
   "headers": [
     {

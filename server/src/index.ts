@@ -21,8 +21,13 @@ dotenv.config();
 const app = express();
 const httpServer = createServer(app);
 
-// CORS origins (allow multiple)
-const corsOrigins = (process.env.CLIENT_URL || 'http://localhost:5173').split(',').map(s => s.trim());
+// Trust proxy (for ngrok/cloudflare)
+app.set('trust proxy', 1);
+
+// CORS origins (allow multiple, plus any origin for development)
+const corsOrigins = process.env.CLIENT_URL 
+  ? process.env.CLIENT_URL.split(',').map(s => s.trim())
+  : true; // Allow all origins when CLIENT_URL is not set
 
 const io = new SocketServer(httpServer, {
   cors: {
@@ -32,17 +37,20 @@ const io = new SocketServer(httpServer, {
   },
 });
 
-// Security headers
+// CORS first (before helmet)
+app.use(cors({
+  origin: true, // Allow any origin
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// Security headers (disabled to avoid CORS conflicts)
 app.use(helmet({
   contentSecurityPolicy: false,
   crossOriginEmbedderPolicy: false,
-  crossOriginResourcePolicy: { policy: 'cross-origin' },
-}));
-
-// CORS
-app.use(cors({
-  origin: corsOrigins,
-  credentials: true,
+  crossOriginOpenerPolicy: false,
+  crossOriginResourcePolicy: false,
 }));
 
 // Rate limiting (100 requests per minute per IP)

@@ -7,7 +7,8 @@
   "rewrites": [
     { "source": "/api/(.*)", "destination": "https://unexercised-breann-unacclivitous.ngrok-free.dev/api/$1" },
     { "source": "/uploads/(.*)", "destination": "https://unexercised-breann-unacclivitous.ngrok-free.dev/uploads/$1" },
-    { "source": "/socket.io/(.*)", "destination": "https://unexercised-breann-unacclivitous.ngrok-free.dev/socket.io/$1" }
+    { "source": "/socket.io/(.*)", "destination": "https://unexercised-breann-unacclivitous.ngrok-free.dev/socket.io/$1" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
     {

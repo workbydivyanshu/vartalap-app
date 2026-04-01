@@ -357,7 +357,7 @@ export default function Landing() {
             <h3>Vartalap</h3>
             <ul>
               <li><a href="/download">Download</a></li>
-              <li><a href="https://github.com" target="_blank" rel="noreferrer">Source code</a></li>
+              <li><a href="https://github.com/workbydivyanshu/vartalap-app" target="_blank" rel="noreferrer">Source code</a></li>
               <li><a href="/help">Help center</a></li>
             </ul>
           </div>
@@ -373,7 +373,7 @@ export default function Landing() {
             <h3>Connect</h3>
             <ul>
               <li><a href="mailto:hello@vartalap.app">hello@vartalap.app</a></li>
-              <li><a href="https://github.com" target="_blank" rel="noreferrer">GitHub</a></li>
+              <li><a href="https://github.com/workbydivyanshu" target="_blank" rel="noreferrer">GitHub</a></li>
             </ul>
           </div>
         </div>
@@ -383,7 +383,7 @@ export default function Landing() {
             Vartalap
           </div>
           <div className="footer-credits">
-            <span>Made by Divyanshu</span>
+            <a href="https://github.com/workbydivyanshu" target="_blank" rel="noreferrer" className="made-by-link">Made by Divyanshu</a>
             <span>© Vartalap, {new Date().getFullYear()}</span>
           </div>
         </div>

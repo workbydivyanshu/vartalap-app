@@ -49,10 +49,6 @@
   50% { transform: translateY(-12px); }
 }
 
-.hero-mockup {
-  animation: float 6s ease-in-out infinite;
-}
-
 /* Glow effect on hero buttons */
 .hero-btn-primary {
   position: relative;
@@ -598,11 +594,11 @@
 }
 
 .footer-credits span { font-size: 13px; color: var(--text-muted); }
-.footer-credits span:first-child { color: var(--text-secondary); font-weight: 500; }
 
 .made-by-link {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--text-secondary);
+  font-weight: 500;
   text-decoration: none;
   transition: color 0.2s;
 }
